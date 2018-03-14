@@ -8,7 +8,7 @@ TEST_DEPS = [:guiceyloops]
 
 desc 'GWT SymbolMap Assertions Library'
 define 'gwt-symbolmap' do
-  project.group = 'org.realityforge.gwt.symbolmap_assertions'
+  project.group = 'org.realityforge.gwt.symbolmap'
   compile.options.source = '1.8'
   compile.options.target = '1.8'
   compile.options.lint = 'all'

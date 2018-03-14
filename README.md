@@ -1,7 +1,7 @@
 # GWT SymbolMap
 
 [![Build Status](https://secure.travis-ci.org/realityforge/gwt-symbolmap.png?branch=master)](http://travis-ci.org/realityforge/gwt-symbolmap)
-[<img src="https://img.shields.io/maven-central/v/org.realityforge.realityforge/gwt-symbolmap-core.svg?label=latest%20release"/>](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.realityforge.arez%22)
+[<img src="https://img.shields.io/maven-central/v/org.realityforge.gwt.symbolmap/gwt-symbolmap.svg?label=latest%20release"/>](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.realityforge.gwt.symbolmap%22)
 [![codecov](https://codecov.io/gh/realityforge/gwt-symbolmap/branch/master/graph/badge.svg)](https://codecov.io/gh/realityforge/gwt-symbolmap)
 
 GWT SymbolMap is a library for reading the `*.symbolMap` files produced by the GWT compiler and asserting the
