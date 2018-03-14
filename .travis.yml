@@ -1,0 +1,20 @@
+language: ruby
+jdk:
+- oraclejdk8
+sudo: false
+rvm:
+- 2.3.1
+before_install:
+- openssl aes-256-cbc -K $encrypted_000000000000_key -iv $encrypted_000000000000_iv -in etc/secrets -out ../secrets.tar -d
+- "(cd ../ && tar xvf secrets.tar)"
+- chmod 600 ../release.asc
+- gpg --import ../release.asc
+install:
+- rvm use 2.3.1
+- gem install bundler
+- bundle install
+script: buildr clean package jacoco:report publish_if_tagged
+after_success:
+- bash <(curl -s https://codecov.io/bash)
+git:
+  depth: false
