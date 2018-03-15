@@ -196,4 +196,19 @@ public final class SymbolEntry
   {
     return _fragmentNumber;
   }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public String toString()
+  {
+    return getJsName() + "," +
+           getJsniIdent() + "," +
+           getClassName() + "," +
+           getMemberName() + "," +
+           getSourceUri() + "," +
+           getSourceLine() + "," +
+           getFragmentNumber();
+  }
 }
