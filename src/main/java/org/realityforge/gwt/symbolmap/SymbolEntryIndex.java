@@ -279,6 +279,21 @@ public final class SymbolEntryIndex
    * @return the SymbolEntry instances that match.
    */
   @Nonnull
+  public List<SymbolEntry> findSymbolsByPatterns( @RegExp( prefix = "^", suffix = "$" ) @Nonnull final String classNamePattern,
+                                                  @RegExp( prefix = "^", suffix = "$" ) @Nonnull final String memberNamePattern )
+  {
+    return findSymbolsByPatterns( Pattern.compile( "^" + classNamePattern + "$" ),
+                                  Pattern.compile( "^" + memberNamePattern + "$" ) );
+  }
+
+  /**
+   * Find symbols by classname pattern and member pattern.
+   *
+   * @param classNamePattern  the pattern to match className.
+   * @param memberNamePattern the pattern to match member name.
+   * @return the SymbolEntry instances that match.
+   */
+  @Nonnull
   public List<SymbolEntry> findSymbolsByPatterns( @Nonnull final Pattern classNamePattern,
                                                   @Nonnull final Pattern memberNamePattern )
   {
