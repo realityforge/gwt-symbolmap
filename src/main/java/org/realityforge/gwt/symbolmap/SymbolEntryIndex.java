@@ -49,6 +49,11 @@ public final class SymbolEntryIndex
     return index;
   }
 
+  /**
+   * Add the specified entry to index.
+   *
+   * @param entry the entry to add.
+   */
   private void addEntry( @Nonnull final SymbolEntry entry )
   {
     _classNameToEntry
