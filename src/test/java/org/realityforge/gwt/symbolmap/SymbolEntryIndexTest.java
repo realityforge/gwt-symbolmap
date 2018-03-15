@@ -11,7 +11,6 @@ import static org.testng.Assert.*;
 public class SymbolEntryIndexTest
   extends AbstractSymbolMapTest
 {
-
   private static final String DEFAULT_INPUT =
     "# { 0 }\n" +
     "# { 'user.agent' : 'gecko1_8' }\n" +
