@@ -167,7 +167,7 @@ public final class SymbolEntryIndex
    */
   public void assertNoMemberMatches( @Nonnull final Pattern classNamePattern, @Nonnull final Pattern memberNamePattern )
   {
-    final List<SymbolEntry> matches = findMembersByPatterns( classNamePattern, memberNamePattern );
+    final List<SymbolEntry> matches = findSymbolsByPatterns( classNamePattern, memberNamePattern );
     if ( !matches.isEmpty() )
     {
       fail( "Expected that the SymbolMap would have no members that match: classNamePattern '" + classNamePattern +
@@ -198,7 +198,7 @@ public final class SymbolEntryIndex
    */
   public void assertMemberMatches( @Nonnull final Pattern classNamePattern, @Nonnull final Pattern memberNamePattern )
   {
-    final List<SymbolEntry> matches = findMembersByPatterns( classNamePattern, memberNamePattern );
+    final List<SymbolEntry> matches = findSymbolsByPatterns( classNamePattern, memberNamePattern );
     if ( matches.isEmpty() )
     {
       fail( "Expected that the SymbolMap would have at least one member that matched: classNamePattern '" +
@@ -279,7 +279,7 @@ public final class SymbolEntryIndex
    * @return the SymbolEntry instances that match.
    */
   @Nonnull
-  public List<SymbolEntry> findMembersByPatterns( @Nonnull final Pattern classNamePattern,
+  public List<SymbolEntry> findSymbolsByPatterns( @Nonnull final Pattern classNamePattern,
                                                   @Nonnull final Pattern memberNamePattern )
   {
     return _classNameToEntry
