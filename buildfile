@@ -30,6 +30,10 @@ define 'gwt-symbolmap' do
   test.using :testng
   test.compile.with TEST_DEPS
 
+  package(:jar)
+  package(:sources)
+  package(:javadoc)
+
   iml.excluded_directories << project._('tmp')
 
   ipr.add_default_testng_configuration(:jvm_args => '-ea -Dfixture_dir=src/test/resources')
