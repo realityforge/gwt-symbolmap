@@ -77,11 +77,11 @@ public final class SymbolEntryIndex
    */
   public void assertNoClassNameMatches( @Nonnull final Pattern classNamePattern )
   {
-    final List<String> matches = findSymbolsByClassName( classNamePattern );
+    final List<SymbolEntry> matches = findSymbolsByClassName( classNamePattern );
     if ( !matches.isEmpty() )
     {
       fail( "Expected that the SymbolMap would have no classNames that match pattern " + classNamePattern +
-            " but the following classNames match: " + matches );
+            " but the following symbols match: " + matches );
     }
   }
 
@@ -136,7 +136,7 @@ public final class SymbolEntryIndex
    */
   public void assertClassNameMatches( @Nonnull final Pattern classNamePattern )
   {
-    final List<String> matches = findSymbolsByClassName( classNamePattern );
+    final List<SymbolEntry> matches = findSymbolsByClassName( classNamePattern );
     if ( matches.isEmpty() )
     {
       fail( "Expected that the SymbolMap would have at least one classname that matches className " +
@@ -250,7 +250,7 @@ public final class SymbolEntryIndex
    * @return the SymbolEntry instances that match.
    */
   @Nonnull
-  public List<String> findSymbolsByClassName( @RegExp( prefix = "^", suffix = "$" ) @Nonnull final String classNamePattern )
+  public List<SymbolEntry> findSymbolsByClassName( @RegExp( prefix = "^", suffix = "$" ) @Nonnull final String classNamePattern )
   {
     return findSymbolsByClassName( Pattern.compile( "^" + classNamePattern + "$" ) );
   }
@@ -262,11 +262,12 @@ public final class SymbolEntryIndex
    * @return the SymbolEntry instances that match.
    */
   @Nonnull
-  public List<String> findSymbolsByClassName( @Nonnull final Pattern classNamePattern )
+  public List<SymbolEntry> findSymbolsByClassName( @Nonnull final Pattern classNamePattern )
   {
-    return _classNameToEntry.keySet()
+    return _classNameToEntry.entrySet()
       .stream()
-      .filter( n -> classNamePattern.matcher( n ).matches() )
+      .filter( n -> classNamePattern.matcher( n.getKey() ).matches() )
+      .flatMap( n -> n.getValue().stream() )
       .collect( Collectors.toList() );
   }
 

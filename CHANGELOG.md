@@ -4,6 +4,7 @@
 
 * Add tests to enforce behaviour of entries and index.
 * Enhance `SymbolEntryIndex` to add the ability to lookup entry by javascript name or jsni identifier.
+* Change `SymbolEntryIndex.findSymbolsByClassName(...)` to return symbols.
 * Add `SymbolEntry.toString()` method that emits serialized form of symbol entry.
 
 ### [v0.01](https://github.com/realityforge/gir/tree/v0.01) (2018-03-14)
