@@ -300,9 +300,9 @@ public final class SymbolEntryIndex
     return _classNameToEntry
       .entrySet()
       .stream()
-      .filter( e -> classNamePattern.matcher( e.getKey() ).matches() &&
-                    e.getValue().stream().anyMatch( s -> memberNamePattern.matcher( s.getMemberName() ).matches() ) )
+      .filter( e -> classNamePattern.matcher( e.getKey() ).matches() )
       .flatMap( e -> e.getValue().stream() )
+      .filter( s -> memberNamePattern.matcher( s.getMemberName() ).matches() )
       .collect( Collectors.toList() );
   }
 
