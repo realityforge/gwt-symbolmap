@@ -19,8 +19,17 @@ import static org.testng.Assert.*;
 @SuppressWarnings( "WeakerAccess" )
 public final class SymbolEntryIndex
 {
+  /**
+   * Index of classnames to entries.
+   */
   private final HashMap<String, ArrayList<SymbolEntry>> _classNameToEntry = new HashMap<>();
+  /**
+   * Index of jsni identifiers to entries.
+   */
   private final HashMap<String, SymbolEntry> _jsniToEntry = new HashMap<>();
+  /**
+   * Index of javascript names to entries.
+   */
   private final HashMap<String, SymbolEntry> _jsToEntry = new HashMap<>();
 
   /**
