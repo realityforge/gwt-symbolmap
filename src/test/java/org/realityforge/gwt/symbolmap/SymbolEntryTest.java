@@ -1,12 +1,12 @@
 package org.realityforge.gwt.symbolmap;
 
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class SymbolEntryTest
+  extends AbstractSymbolMapTest
 {
   @Test
   public void basicOperation()
@@ -23,8 +23,7 @@ public class SymbolEntryTest
       "ArezContext,,arez.ArezContext,,arez/ArezContext.java,29,-1\n" +
       "r,arez.ArezContext::$action(Larez/ArezContext;Ljava/lang/String;Larez/TransactionMode;Larez/Procedure;ZLarez/Observer;[Ljava/lang/Object;)V,arez.ArezContext,$action,arez/ArezContext.java,1533,0\n";
 
-    final Path file = Files.createTempFile( "gwt-symbolmap", ".symbolMap" );
-    Files.write( file, input.getBytes() );
+    final Path file = createFileFromContent( input );
     final ArrayList<SymbolEntry> entries = new ArrayList<>();
 
     SymbolEntry.readSymbolMap( file, entries::add );
@@ -62,8 +61,7 @@ public class SymbolEntryTest
       "# jsName, jsniIdent, className, memberName, sourceUri, sourceLine, fragmentNumber\n" +
       "ArezContext,,arez.ArezContext,,arez/ArezContext.java,29,-1\n";
 
-    final Path file = Files.createTempFile( "gwt-symbolmap", ".symbolMap" );
-    Files.write( file, input.getBytes() );
+    final Path file = createFileFromContent( input );
     final ArrayList<SymbolEntry> entries = new ArrayList<>();
 
     SymbolEntry.readSymbolMap( file, entries::add );
@@ -90,8 +88,7 @@ public class SymbolEntryTest
       "# { 'user.agent' : 'ie10' }\n" +
       "ArezContext,,arez.ArezContext,,arez/ArezContext.java,29,-1\n";
 
-    final Path file = Files.createTempFile( "gwt-symbolmap", ".symbolMap" );
-    Files.write( file, input.getBytes() );
+    final Path file = createFileFromContent( input );
     final ArrayList<SymbolEntry> entries = new ArrayList<>();
 
     assertThrows( () -> SymbolEntry.readSymbolMap( file, entries::add ) );
