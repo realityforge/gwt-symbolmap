@@ -20,6 +20,8 @@ import static org.testng.Assert.*;
 public final class SymbolEntryIndex
 {
   private final HashMap<String, ArrayList<SymbolEntry>> _classNameToEntry = new HashMap<>();
+  private final HashMap<String, SymbolEntry> _jsniToEntry = new HashMap<>();
+  private final HashMap<String, SymbolEntry> _jsToEntry = new HashMap<>();
 
   /**
    * Read and build an index from symbolMap file.
@@ -43,6 +45,8 @@ public final class SymbolEntryIndex
     _classNameToEntry
       .computeIfAbsent( entry.getClassName(), e -> new ArrayList<>() )
       .add( entry );
+    _jsniToEntry.put( entry.getJsniIdent(), entry );
+    _jsToEntry.put( entry.getJsName(), entry );
   }
 
   /**
@@ -286,11 +290,18 @@ public final class SymbolEntryIndex
   @Nullable
   public SymbolEntry findByJsniIdentifier( @Nonnull final String jsniIdentifier )
   {
-    return _classNameToEntry
-      .entrySet()
-      .stream()
-      .flatMap( e -> e.getValue().stream().filter( s -> s.getJsniIdent().equals( jsniIdentifier ) ) )
-      .findAny()
-      .orElse( null );
+    return _jsniToEntry.get( jsniIdentifier );
+  }
+
+  /**
+   * Find symbol by javascript names.
+   *
+   * @param jsName the javascript names.
+   * @return the SymbolEntry instance that matches if any.
+   */
+  @Nullable
+  public SymbolEntry findByJsName( @Nonnull final String jsName )
+  {
+    return _jsToEntry.get( jsName );
   }
 }
