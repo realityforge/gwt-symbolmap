@@ -1,6 +1,7 @@
 # Change Log
 
-### Unreleased
+### [v0.02](https://github.com/realityforge/gwt-symbolmap/tree/v0.02) (2018-03-15)
+[Full Changelog](https://github.com/realityforge/gwt-symbolmap/compare/v0.01...v0.02)
 
 * Add tests to enforce behaviour of entries and index.
 * Enhance `SymbolEntryIndex` to add the ability to lookup entry by javascript name or jsni identifier.
