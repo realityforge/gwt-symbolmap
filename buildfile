@@ -24,7 +24,6 @@ define 'gwt-symbolmap' do
                :javacsv,
                :testng
 
-  test.options[:properties] = { 'fixture_dir' => _('src/test/resources') }
   test.options[:java_args] = ['-ea']
 
   test.using :testng
@@ -36,6 +35,6 @@ define 'gwt-symbolmap' do
 
   iml.excluded_directories << project._('tmp')
 
-  ipr.add_default_testng_configuration(:jvm_args => '-ea -Dfixture_dir=src/test/resources')
+  ipr.add_default_testng_configuration(:jvm_args => '-ea')
   ipr.add_component_from_artifact(:idea_codestyle)
 end
