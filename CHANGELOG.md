@@ -2,6 +2,8 @@
 
 ### Unreleased
 
+* Add `SoycSizeMaps.readFromGzFile(...)` for reading from a gzipped file.
+
 ### [v0.03](https://github.com/realityforge/gwt-symbolmap/tree/v0.03) (2018-06-05)
 [Full Changelog](https://github.com/realityforge/gwt-symbolmap/compare/v0.02...v0.03)
 

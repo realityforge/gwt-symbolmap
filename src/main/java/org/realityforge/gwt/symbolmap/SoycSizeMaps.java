@@ -1,16 +1,22 @@
 package org.realityforge.gwt.symbolmap;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.zip.GZIPInputStream;
 import javax.annotation.Nonnull;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 public final class SoycSizeMaps
 {
@@ -53,8 +59,29 @@ public final class SoycSizeMaps
   public static SoycSizeMaps readFromFile( @Nonnull final Path path )
     throws Exception
   {
+    return readFromInputStream( new FileInputStream( path.toFile() ) );
+  }
+
+  /**
+   * Read soyc size maps from file.
+   *
+   * @param path the path to load size maps from.
+   * @return the new SoycSizeMaps.
+   * @throws Exception if there is an error reading or parsing file.
+   */
+  @Nonnull
+  public static SoycSizeMaps readFromGzFile( @Nonnull final Path path )
+    throws Exception
+  {
+    return readFromInputStream( new GZIPInputStream( new FileInputStream( path.toFile() ) ) );
+  }
+
+  @Nonnull
+  private static SoycSizeMaps readFromInputStream( @Nonnull final InputStream inputStream )
+    throws ParserConfigurationException, SAXException, IOException
+  {
     final DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-    final Document doc = builder.parse( path.toFile() );
+    final Document doc = builder.parse( inputStream );
     doc.getDocumentElement().normalize();
 
     return parse( doc );

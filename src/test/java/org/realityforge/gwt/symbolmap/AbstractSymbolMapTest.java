@@ -1,9 +1,11 @@
 package org.realityforge.gwt.symbolmap;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.ParseException;
+import java.util.zip.GZIPOutputStream;
 import javax.annotation.Nonnull;
 
 abstract class AbstractSymbolMapTest
@@ -17,11 +19,45 @@ abstract class AbstractSymbolMapTest
   }
 
   @Nonnull
+  final Path createGzipFileFromContent( @Nonnull final String input )
+    throws IOException
+  {
+    return createFileFromContent( gzipData( input.getBytes() ) );
+  }
+
+  @Nonnull
   final Path createFileFromContent( @Nonnull final String input )
     throws IOException
   {
+    return createFileFromContent( input.getBytes() );
+  }
+
+  @Nonnull
+  private Path createFileFromContent( final byte[] bytes )
+    throws IOException
+  {
     final Path file = Files.createTempFile( "gwt-symbolmap", ".symbolMap" );
-    Files.write( file, input.getBytes() );
+    Files.write( file, bytes );
     return file;
+  }
+
+  @Nonnull
+  private byte[] gzipData( @Nonnull final byte[] bytes )
+    throws IOException
+  {
+    final ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+    try
+    {
+      try ( final GZIPOutputStream zipStream = new GZIPOutputStream( byteStream ) )
+      {
+        zipStream.write( bytes );
+      }
+    }
+    finally
+    {
+      byteStream.close();
+    }
+
+    return byteStream.toByteArray();
   }
 }
