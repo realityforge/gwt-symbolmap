@@ -119,6 +119,26 @@ public final class SymbolEntry
   }
 
   /**
+   * Return true if symbol represents a type rather than a member (such as a field or a method).
+   *
+   * @return true if symbol represents a type rather than a member (such as a field or a method).
+   */
+  public boolean isType()
+  {
+    return "".equals( _jsniIdent );
+  }
+
+  /**
+   * Return true if symbol represents a method or field.
+   *
+   * @return true if symbol represents a method or field.
+   */
+  public boolean isMember()
+  {
+    return !isType();
+  }
+
+  /**
    * Return the javascript name of the symbol.
    *
    * @return the javascript name of the symbol.

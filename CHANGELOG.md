@@ -5,6 +5,7 @@
 * Convert `SymbolEntry.fragmentNumber` to an integer.
 * Convert `SymbolEntry.sourceLine` to an integer.
 * Ensure that `SymbolEntryIndexDiff` correctly handles differences in both members as well as types.
+* Add `SymbolEntry.isType()` and `SymbolEntry.isMember()` helper methods.
 
 ### [v0.04](https://github.com/realityforge/gwt-symbolmap/tree/v0.04) (2018-06-05)
 [Full Changelog](https://github.com/realityforge/gwt-symbolmap/compare/v0.03...v0.04)
