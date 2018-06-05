@@ -26,6 +26,7 @@ public final class SymbolEntryIndexDiff
     _after = Objects.requireNonNull( after );
   }
 
+  @Nonnull
   public static SymbolEntryIndexDiff diff( @Nonnull final SymbolEntryIndex before,
                                            @Nonnull final SymbolEntryIndex after )
   {
