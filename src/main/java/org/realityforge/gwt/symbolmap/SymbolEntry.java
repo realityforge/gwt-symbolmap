@@ -28,8 +28,7 @@ public final class SymbolEntry
   private final String _memberName;
   @Nonnull
   private final String _sourceUri;
-  @Nonnull
-  private final String _sourceLine;
+  private final int _sourceLine;
   private final int _fragmentNumber;
 
   private SymbolEntry( @Nonnull final String jsName,
@@ -37,7 +36,7 @@ public final class SymbolEntry
                        @Nonnull final String className,
                        @Nonnull final String memberName,
                        @Nonnull final String sourceUri,
-                       @Nonnull final String sourceLine,
+                       final int sourceLine,
                        final int fragmentNumber )
   {
     _jsName = Objects.requireNonNull( jsName );
@@ -45,7 +44,7 @@ public final class SymbolEntry
     _className = Objects.requireNonNull( className );
     _memberName = Objects.requireNonNull( memberName );
     _sourceUri = Objects.requireNonNull( sourceUri );
-    _sourceLine = Objects.requireNonNull( sourceLine );
+    _sourceLine = sourceLine;
     _fragmentNumber = fragmentNumber;
   }
 
@@ -103,7 +102,7 @@ public final class SymbolEntry
                          reader.get( "className" ),
                          reader.get( "memberName" ),
                          reader.get( "sourceUri" ),
-                         reader.get( "sourceLine" ),
+                         Integer.parseInt( reader.get( "sourceLine" ) ),
                          Integer.parseInt( reader.get( "fragmentNumber" ) ) );
       action.accept( entry );
     }
@@ -179,8 +178,7 @@ public final class SymbolEntry
    *
    * @return the line in the source file that defines symbol.
    */
-  @Nonnull
-  public String getSourceLine()
+  public int getSourceLine()
   {
     return _sourceLine;
   }
