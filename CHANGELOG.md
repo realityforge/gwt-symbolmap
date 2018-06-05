@@ -2,6 +2,8 @@
 
 ### Unreleased
 
+* Convert `SymbolEntry.fragmentNumber` to an integer.
+
 ### [v0.04](https://github.com/realityforge/gwt-symbolmap/tree/v0.04) (2018-06-05)
 [Full Changelog](https://github.com/realityforge/gwt-symbolmap/compare/v0.03...v0.04)
 

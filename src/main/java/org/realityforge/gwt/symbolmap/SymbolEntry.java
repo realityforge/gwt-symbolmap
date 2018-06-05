@@ -30,8 +30,7 @@ public final class SymbolEntry
   private final String _sourceUri;
   @Nonnull
   private final String _sourceLine;
-  @Nonnull
-  private final String _fragmentNumber;
+  private final int _fragmentNumber;
 
   private SymbolEntry( @Nonnull final String jsName,
                        @Nonnull final String jsniIdent,
@@ -39,7 +38,7 @@ public final class SymbolEntry
                        @Nonnull final String memberName,
                        @Nonnull final String sourceUri,
                        @Nonnull final String sourceLine,
-                       @Nonnull final String fragmentNumber )
+                       final int fragmentNumber )
   {
     _jsName = Objects.requireNonNull( jsName );
     _jsniIdent = Objects.requireNonNull( jsniIdent );
@@ -47,7 +46,7 @@ public final class SymbolEntry
     _memberName = Objects.requireNonNull( memberName );
     _sourceUri = Objects.requireNonNull( sourceUri );
     _sourceLine = Objects.requireNonNull( sourceLine );
-    _fragmentNumber = Objects.requireNonNull( fragmentNumber );
+    _fragmentNumber = fragmentNumber;
   }
 
   /**
@@ -105,7 +104,7 @@ public final class SymbolEntry
                          reader.get( "memberName" ),
                          reader.get( "sourceUri" ),
                          reader.get( "sourceLine" ),
-                         reader.get( "fragmentNumber" ) );
+                         Integer.parseInt( reader.get( "fragmentNumber" ) ) );
       action.accept( entry );
     }
     reader.close();
@@ -191,8 +190,7 @@ public final class SymbolEntry
    *
    * @return the fragment number in which the symbol is output.
    */
-  @Nonnull
-  public String getFragmentNumber()
+  public int getFragmentNumber()
   {
     return _fragmentNumber;
   }

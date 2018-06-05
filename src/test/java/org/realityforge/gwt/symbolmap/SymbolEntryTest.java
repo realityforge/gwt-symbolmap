@@ -38,7 +38,7 @@ public class SymbolEntryTest
     assertEquals( symbolEntry1.getMemberName(), "" );
     assertEquals( symbolEntry1.getSourceUri(), "arez/ArezContext.java" );
     assertEquals( symbolEntry1.getSourceLine(), "29" );
-    assertEquals( symbolEntry1.getFragmentNumber(), "-1" );
+    assertEquals( symbolEntry1.getFragmentNumber(), -1 );
     assertEquals( symbolEntry1.toString(), "ArezContext,,arez.ArezContext,,arez/ArezContext.java,29,-1" );
 
     assertEquals( symbolEntry2.getJsName(), "r" );
@@ -48,8 +48,9 @@ public class SymbolEntryTest
     assertEquals( symbolEntry2.getMemberName(), "$action" );
     assertEquals( symbolEntry2.getSourceUri(), "arez/ArezContext.java" );
     assertEquals( symbolEntry2.getSourceLine(), "1533" );
-    assertEquals( symbolEntry2.getFragmentNumber(), "0" );
-    assertEquals( symbolEntry2.toString(), "r,arez.ArezContext::$action(Larez/ArezContext;Ljava/lang/String;Larez/TransactionMode;Larez/Procedure;ZLarez/Observer;[Ljava/lang/Object;)V,arez.ArezContext,$action,arez/ArezContext.java,1533,0" );
+    assertEquals( symbolEntry2.getFragmentNumber(), 0 );
+    assertEquals( symbolEntry2.toString(),
+                  "r,arez.ArezContext::$action(Larez/ArezContext;Ljava/lang/String;Larez/TransactionMode;Larez/Procedure;ZLarez/Observer;[Ljava/lang/Object;)V,arez.ArezContext,$action,arez/ArezContext.java,1533,0" );
   }
 
   @Test
@@ -77,7 +78,7 @@ public class SymbolEntryTest
     assertEquals( symbolEntry1.getMemberName(), "" );
     assertEquals( symbolEntry1.getSourceUri(), "arez/ArezContext.java" );
     assertEquals( symbolEntry1.getSourceLine(), "29" );
-    assertEquals( symbolEntry1.getFragmentNumber(), "-1" );
+    assertEquals( symbolEntry1.getFragmentNumber(), -1 );
   }
 
   @Test
