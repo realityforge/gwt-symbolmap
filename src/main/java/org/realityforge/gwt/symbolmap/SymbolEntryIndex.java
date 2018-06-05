@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -19,6 +20,10 @@ import static org.testng.Assert.*;
 @SuppressWarnings( "WeakerAccess" )
 public final class SymbolEntryIndex
 {
+  /**
+   * The entries in the order they appear in the input file.
+   */
+  private final ArrayList<SymbolEntry> _symbolEntries = new ArrayList<>();
   /**
    * Index of classnames to entries.
    */
@@ -56,11 +61,23 @@ public final class SymbolEntryIndex
    */
   private void addEntry( @Nonnull final SymbolEntry entry )
   {
+    _symbolEntries.add( entry );
     _classNameToEntry
       .computeIfAbsent( entry.getClassName(), e -> new ArrayList<>() )
       .add( entry );
     _jsniToEntry.put( entry.getJsniIdent(), entry );
     _jsToEntry.put( entry.getJsName(), entry );
+  }
+
+  /**
+   * Return the list of symbol entries from symbol map in the order they appeared in the file.
+   *
+   * @return the list of symbol entries from symbol map in the order they appeared in the file.
+   */
+  @Nonnull
+  public List<SymbolEntry> getSymbolEntries()
+  {
+    return Collections.unmodifiableList( _symbolEntries );
   }
 
   /**

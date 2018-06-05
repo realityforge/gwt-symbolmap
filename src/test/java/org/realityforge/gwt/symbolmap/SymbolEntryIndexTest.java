@@ -27,6 +27,22 @@ public class SymbolEntryIndexTest
     "Scheduler,,com.google.gwt.core.client.Scheduler,,com/google/gwt/core/client/Scheduler.java,33,-1\n";
 
   @Test
+  public void getSymbolEntries()
+    throws Exception
+  {
+    final SymbolEntryIndex index = readDefaultIndex();
+
+    final List<SymbolEntry> symbols = index.getSymbolEntries();
+    assertEquals( symbols.size(), 6 );
+    assertEquals( symbols.get( 0 ).getJsName(), "ArezContext" );
+    assertEquals( symbols.get( 1 ).getJsName(), "r" );
+    assertEquals( symbols.get( 2 ).getJsName(), "CircularBuffer" );
+    assertEquals( symbols.get( 3 ).getJsName(), "K" );
+    assertEquals( symbols.get( 4 ).getJsName(), "Ic" );
+    assertEquals( symbols.get( 5 ).getJsName(), "Scheduler" );
+  }
+
+  @Test
   public void findSymbolsByClassName()
     throws Exception
   {
@@ -99,11 +115,13 @@ public class SymbolEntryIndexTest
   {
     final SymbolEntryIndex index = readDefaultIndex();
 
-    final SymbolEntry symbol1 = index.findByJsniIdentifier( "arez.ArezContext::$action(Larez/ArezContext;Ljava/lang/String;Larez/TransactionMode;Larez/Procedure;ZLarez/Observer;[Ljava/lang/Object;)V" );
+    final SymbolEntry symbol1 = index.findByJsniIdentifier(
+      "arez.ArezContext::$action(Larez/ArezContext;Ljava/lang/String;Larez/TransactionMode;Larez/Procedure;ZLarez/Observer;[Ljava/lang/Object;)V" );
     assertNotNull( symbol1 );
     assertEquals( symbol1.getJsName(), "r" );
 
-    final SymbolEntry symbol2 = index.findByJsniIdentifier( "arez.CircularBuffer::$add(Larez/CircularBuffer;Ljava/lang/Object;)V" );
+    final SymbolEntry symbol2 =
+      index.findByJsniIdentifier( "arez.CircularBuffer::$add(Larez/CircularBuffer;Ljava/lang/Object;)V" );
     assertNotNull( symbol2 );
     assertEquals( symbol2.getJsName(), "K" );
 
