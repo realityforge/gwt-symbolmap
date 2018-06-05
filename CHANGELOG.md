@@ -5,6 +5,7 @@
 * Add `SymbolEntryIndex.getSymbolEntries()` method that returns all the entries in the order they appear
   in the input file.
 * Add `SymbolEntryIndexDiff` class to help derive diffs between symbol indexes.
+* Add `SoycSizeMaps` class to ready in soyc size maps. Useful when comparing differences between builds.
 
 ### [v0.02](https://github.com/realityforge/gwt-symbolmap/tree/v0.02) (2018-03-15)
 [Full Changelog](https://github.com/realityforge/gwt-symbolmap/compare/v0.01...v0.02)
