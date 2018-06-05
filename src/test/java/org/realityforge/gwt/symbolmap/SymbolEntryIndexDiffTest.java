@@ -49,6 +49,20 @@ public class SymbolEntryIndexDiffTest
     assertEquals( diff.getAdditional().get( 0 ).getJsName(), "CircularBuffer" );
     assertEquals( diff.getSame().size(), before.getSymbolEntries().size() - 1 );
     assertEquals( diff.getSame().size(), after.getSymbolEntries().size() - 1 );
+
+    assertEquals( diff.printToString(),
+                  "\n" +
+                  "Symbols Removed:\n" +
+                  "\n" +
+                  "Symbol: arez.ArezContext::$action(Larez/ArezContext;Ljava/lang/String;Larez/TransactionMode;Larez/Procedure;ZLarez/Observer;[Ljava/lang/Object;)V\n" +
+                  "Location: arez/ArezContext.java:1533\n" +
+                  "\n" +
+                  "\n" +
+                  "Symbols Added:\n" +
+                  "\n" +
+                  "Symbol: arez.CircularBuffer\n" +
+                  "Location: arez/CircularBuffer.java:13\n" +
+                  "\n" );
   }
 
   @Test

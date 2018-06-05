@@ -89,4 +89,41 @@ public final class SymbolEntryIndexDiff
   {
     return Collections.unmodifiableList( _same );
   }
+
+  @Nonnull
+  public String printToString()
+  {
+    final StringBuilder sb = new StringBuilder();
+    final List<SymbolEntry> missing = getMissing();
+    if ( !missing.isEmpty() )
+    {
+      sb.append( "\nSymbols Removed:\n\n" );
+      missing.forEach( entry -> emitEntry( sb, entry ) );
+    }
+    final List<SymbolEntry> additional = getAdditional();
+    if ( !additional.isEmpty() )
+    {
+      sb.append( "\nSymbols Added:\n\n" );
+      additional.forEach( entry -> emitEntry( sb, entry ) );
+    }
+    return sb.toString();
+  }
+
+  private void emitEntry( @Nonnull final StringBuilder sb, @Nonnull final SymbolEntry entry )
+  {
+    sb.append( "Symbol: " );
+    if ( entry.isType() )
+    {
+      sb.append( entry.getClassName() );
+    }
+    else
+    {
+      sb.append( entry.getJsniIdent() );
+    }
+    sb.append( "\nLocation: " );
+    sb.append( entry.getSourceUri() );
+    sb.append( ":" );
+    sb.append( entry.getSourceLine() );
+    sb.append( "\n\n" );
+  }
 }
