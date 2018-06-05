@@ -1,7 +1,6 @@
 package org.realityforge.gwt.symbolmap;
 
 import java.io.IOException;
-import java.nio.file.Path;
 import java.text.ParseException;
 import java.util.List;
 import javax.annotation.Nonnull;
@@ -134,13 +133,5 @@ public class SymbolEntryIndexTest
     throws IOException, ParseException
   {
     return readIndexFromInput( DEFAULT_INPUT );
-  }
-
-  @Nonnull
-  private SymbolEntryIndex readIndexFromInput( @Nonnull final String input )
-    throws IOException, ParseException
-  {
-    final Path file = createFileFromContent( input );
-    return SymbolEntryIndex.readSymbolMapIntoIndex( file );
   }
 }
