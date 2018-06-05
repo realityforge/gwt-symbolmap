@@ -1,6 +1,7 @@
 # Change Log
 
-### Unreleased
+### [v0.03](https://github.com/realityforge/gwt-symbolmap/tree/v0.03) (2018-06-05)
+[Full Changelog](https://github.com/realityforge/gwt-symbolmap/compare/v0.02...v0.03)
 
 * Add `SymbolEntryIndex.getSymbolEntries()` method that returns all the entries in the order they appear
   in the input file.
