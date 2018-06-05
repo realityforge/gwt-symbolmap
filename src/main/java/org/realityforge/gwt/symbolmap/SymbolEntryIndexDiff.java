@@ -33,7 +33,13 @@ public final class SymbolEntryIndexDiff
     final SymbolEntryIndexDiff diff = new SymbolEntryIndexDiff( before, after );
     for ( final SymbolEntry entry : before.getSymbolEntries() )
     {
-      if ( null == after.findByJsName( entry.getJsName() ) )
+      final String jsniIdent = entry.getJsniIdent();
+      final boolean isJsniValid = "".equals( jsniIdent );
+      if ( !isJsniValid && null == after.findByJsniIdentifier( jsniIdent ) )
+      {
+        diff._missing.add( entry );
+      }
+      else if ( isJsniValid && null == after.findByJsName( entry.getJsName() ) )
       {
         diff._missing.add( entry );
       }
@@ -44,7 +50,13 @@ public final class SymbolEntryIndexDiff
     }
     for ( final SymbolEntry entry : after.getSymbolEntries() )
     {
-      if ( null == before.findByJsName( entry.getJsName() ) )
+      final String jsniIdent = entry.getJsniIdent();
+      final boolean isJsniValid = "".equals( jsniIdent );
+      if ( !isJsniValid && null == before.findByJsniIdentifier( jsniIdent ) )
+      {
+        diff._additional.add( entry );
+      }
+      else if ( isJsniValid && null == before.findByJsName( entry.getJsName() ) )
       {
         diff._additional.add( entry );
       }
