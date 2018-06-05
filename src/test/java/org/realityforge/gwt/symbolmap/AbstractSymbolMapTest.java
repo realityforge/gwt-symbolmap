@@ -6,7 +6,7 @@ import java.nio.file.Path;
 import java.text.ParseException;
 import javax.annotation.Nonnull;
 
-public abstract class AbstractSymbolMapTest
+abstract class AbstractSymbolMapTest
 {
   @Nonnull
   final SymbolEntryIndex readIndexFromInput( @Nonnull final String input )
