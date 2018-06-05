@@ -40,6 +40,7 @@ public class SymbolEntryIndexDiffTest
     final SymbolEntryIndex before = readIndexFromInput( BEFORE );
     final SymbolEntryIndex after = readIndexFromInput( AFTER );
     final SymbolEntryIndexDiff diff = SymbolEntryIndexDiff.diff( before, after );
+    assertEquals( diff.hasDifferences(), true );
     assertEquals( diff.getBefore(), before );
     assertEquals( diff.getAfter(), after );
 
@@ -73,6 +74,7 @@ public class SymbolEntryIndexDiffTest
       readIndexFromInput( HEADERS + "ArezContext,,arez.ArezContext,,arez/ArezContext.java,29,-1\n" );
     final SymbolEntryIndex after = readIndexFromInput( HEADERS );
     final SymbolEntryIndexDiff diff = SymbolEntryIndexDiff.diff( before, after );
+    assertEquals( diff.hasDifferences(), true );
     assertEquals( diff.getBefore(), before );
     assertEquals( diff.getAfter(), after );
 
@@ -91,6 +93,7 @@ public class SymbolEntryIndexDiffTest
     final SymbolEntryIndex after =
       readIndexFromInput( HEADERS + "ArezContext,,arez.ArezContext,,arez/ArezContext.java,29,-1\n" );
     final SymbolEntryIndexDiff diff = SymbolEntryIndexDiff.diff( before, after );
+    assertEquals( diff.hasDifferences(), true );
     assertEquals( diff.getBefore(), before );
     assertEquals( diff.getAfter(), after );
 
@@ -109,6 +112,7 @@ public class SymbolEntryIndexDiffTest
                           "r,arez.ArezContext::$action(Larez/ArezContext;Ljava/lang/String;Larez/TransactionMode;Larez/Procedure;ZLarez/Observer;[Ljava/lang/Object;)V,arez.ArezContext,$action,arez/ArezContext.java,1533,0\n" );
     final SymbolEntryIndex after = readIndexFromInput( HEADERS );
     final SymbolEntryIndexDiff diff = SymbolEntryIndexDiff.diff( before, after );
+    assertEquals( diff.hasDifferences(), true );
     assertEquals( diff.getBefore(), before );
     assertEquals( diff.getAfter(), after );
 
@@ -127,6 +131,7 @@ public class SymbolEntryIndexDiffTest
       readIndexFromInput( HEADERS +
                           "r,arez.ArezContext::$action(Larez/ArezContext;Ljava/lang/String;Larez/TransactionMode;Larez/Procedure;ZLarez/Observer;[Ljava/lang/Object;)V,arez.ArezContext,$action,arez/ArezContext.java,1533,0\n" );
     final SymbolEntryIndexDiff diff = SymbolEntryIndexDiff.diff( before, after );
+    assertEquals( diff.hasDifferences(), true );
     assertEquals( diff.getBefore(), before );
     assertEquals( diff.getAfter(), after );
 
@@ -143,6 +148,7 @@ public class SymbolEntryIndexDiffTest
     final SymbolEntryIndex before = readIndexFromInput( BEFORE );
     final SymbolEntryIndex after = readIndexFromInput( BEFORE );
     final SymbolEntryIndexDiff diff = SymbolEntryIndexDiff.diff( before, after );
+    assertEquals( diff.hasDifferences(), false );
     assertEquals( diff.getBefore(), before );
     assertEquals( diff.getAfter(), after );
     assertEquals( diff.getMissing().size(), 0 );

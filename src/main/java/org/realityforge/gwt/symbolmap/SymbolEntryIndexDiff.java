@@ -90,6 +90,11 @@ public final class SymbolEntryIndexDiff
     return Collections.unmodifiableList( _same );
   }
 
+  public boolean hasDifferences()
+  {
+    return !( getAdditional().isEmpty() && getMissing().isEmpty() );
+  }
+
   @Nonnull
   public String printToString()
   {
