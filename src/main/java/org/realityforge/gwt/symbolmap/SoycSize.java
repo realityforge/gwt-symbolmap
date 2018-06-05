@@ -26,7 +26,7 @@ public final class SoycSize
   @Nonnegative
   private final int _size;
 
-  SoycSize( @Nonnull final Type type, @Nonnull final String ref, final int size )
+  private SoycSize( @Nonnull final Type type, @Nonnull final String ref, final int size )
   {
     _type = Objects.requireNonNull( type );
     _ref = Objects.requireNonNull( ref );
