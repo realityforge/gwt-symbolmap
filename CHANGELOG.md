@@ -8,6 +8,7 @@
 * Add `SymbolEntry.isType()` and `SymbolEntry.isMember()` helper methods.
 * Add `SymbolEntryIndexDiff.printToString()` to display differences in human readable form.
 * Add `SymbolEntryIndexDiff.hasDifferences()` to determine if there is any differences.
+* Add `SoycSizeMapsDiff` class to help compare soyc size reports.
 
 ### [v0.04](https://github.com/realityforge/gwt-symbolmap/tree/v0.04) (2018-06-05)
 [Full Changelog](https://github.com/realityforge/gwt-symbolmap/compare/v0.03...v0.04)
