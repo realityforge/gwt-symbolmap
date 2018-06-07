@@ -25,7 +25,7 @@ public class SoycSizeMapsDiffTest
     final String after = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                          "<sizemaps>\n" +
                          "  <sizemap fragment=\"0\" size=\"74\">\n" +
-                         "    <size type=\"var\" ref=\"c\" size=\"1\"/>\n" +
+                         "    <size type=\"field\" ref=\"arez.ArezContextHolder::c_zone\" size=\"1\"/>\n" +
                          "    <size type=\"string\" ref=\"number\" size=\"11\"/>\n" +
                          "    <size type=\"method\" ref=\"arez.ArezContextHolder::$clinit()V\" size=\"22\"/>\n" +
                          "    <size type=\"field\" ref=\"arez.ArezContextHolder::c_context\" size=\"1\"/>\n" +
@@ -58,7 +58,57 @@ public class SoycSizeMapsDiffTest
     assertEquals( diff.printToString(),
                   "REMOVED type=type ref=arez.ArezContext size=35\n" +
                   "CHANGED type=method ref=arez.ArezContextHolder::$clinit()V size=26->22 Size Delta=-4\n" +
-                  "ADDED type=var ref=c size=1\n" );
+                  "ADDED type=field ref=arez.ArezContextHolder::c_zone size=1\n" );
+  }
+
+  @Test
+  public void basicOperation_includeVar()
+    throws Exception
+  {
+    final String before = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                          "<sizemaps>\n" +
+                          "  <sizemap fragment=\"0\" size=\"74\">\n" +
+                          "    <size type=\"var\" ref=\"c\" size=\"1\"/>\n" +
+                          "    <size type=\"var\" ref=\"d\" size=\"2\"/>\n" +
+                          "    <size type=\"var\" ref=\"e\" size=\"3\"/>\n" +
+                          "  </sizemap>\n" +
+                          "</sizemaps>\n";
+    final String after = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                         "<sizemaps>\n" +
+                         "  <sizemap fragment=\"0\" size=\"74\">\n" +
+                         "    <size type=\"var\" ref=\"c\" size=\"1\"/>\n" +
+                         "    <size type=\"var\" ref=\"e\" size=\"2\"/>\n" +
+                         "    <size type=\"var\" ref=\"f\" size=\"2\"/>\n" +
+                         "  </sizemap>\n" +
+                         "</sizemaps>\n";
+    final SoycSizeMaps beforeSizeMaps = readFromInput( before );
+    final SoycSizeMaps afterSizeMaps = readFromInput( after );
+    final SoycSizeMapsDiff diff = SoycSizeMapsDiff.diff( beforeSizeMaps, afterSizeMaps, true );
+    assertEquals( diff.getBefore(), beforeSizeMaps );
+    assertEquals( diff.getAfter(), afterSizeMaps );
+    assertEquals( diff.hasDifferences(), true );
+    final List<SoycSizeMapsDiff.Entry> entries = diff.getEntries();
+    assertEquals( entries.size(), 3 );
+    assertEntry( entries.get( 0 ),
+                 SoycSizeMapsDiff.DiffType.REMOVED,
+                 0,
+                 beforeSizeMaps.getSizeMaps().get( 0 ).getSizes().get( 1 ),
+                 null );
+    assertEntry( entries.get( 1 ),
+                 SoycSizeMapsDiff.DiffType.CHANGED,
+                 0,
+                 beforeSizeMaps.getSizeMaps().get( 0 ).getSizes().get( 2 ),
+                 afterSizeMaps.getSizeMaps().get( 0 ).getSizes().get( 1 ) );
+    assertEntry( entries.get( 2 ),
+                 SoycSizeMapsDiff.DiffType.ADDED,
+                 0,
+                 null,
+                 afterSizeMaps.getSizeMaps().get( 0 ).getSizes().get( 2 ) );
+
+    assertEquals( diff.printToString(),
+                  "REMOVED type=var ref=d size=2\n" +
+                  "CHANGED type=var ref=e size=3->2 Size Delta=-1\n" +
+                  "ADDED type=var ref=f size=2\n" );
   }
 
   @SuppressWarnings( "SameParameterValue" )

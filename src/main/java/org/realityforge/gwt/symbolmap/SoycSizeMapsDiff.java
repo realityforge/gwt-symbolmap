@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -79,13 +80,33 @@ public final class SoycSizeMapsDiff
   @Nonnull
   public static SoycSizeMapsDiff diff( @Nonnull final SoycSizeMaps before, @Nonnull final SoycSizeMaps after )
   {
+    /*
+     * By default vars are ignored as GWT produces a var per-type and there is no easy way to trace var to
+     * type and thus they always come through as different.
+     */
+    return diff( before, after, false );
+  }
+
+  @Nonnull
+  public static SoycSizeMapsDiff diff( @Nonnull final SoycSizeMaps before,
+                                       @Nonnull final SoycSizeMaps after,
+                                       final boolean includeVar )
+  {
     final SoycSizeMapsDiff diff = new SoycSizeMapsDiff( before, after );
     for ( final SoycSizeMap map : before.getSizeMaps() )
     {
       final int fragment = map.getFragment();
       final SoycSizeMap other =
-        after.getSizeMaps().stream().filter( m -> m.getFragment() == fragment ).findFirst().orElse( null );
-      for ( final SoycSize soycSize : map.getSizes() )
+        after.getSizeMaps()
+          .stream()
+          .filter( m -> m.getFragment() == fragment )
+          .findFirst()
+          .orElse( null );
+      final List<SoycSize> sizes =
+        includeVar ?
+        map.getSizes() :
+        map.getSizes().stream().filter( s -> SoycSize.Type.var != s.getType() ).collect( Collectors.toList() );
+      for ( final SoycSize soycSize : sizes )
       {
         final SoycSize otherSoycSize = null != other ? other.findSizeByRef( soycSize.getRef() ) : null;
         if ( null == otherSoycSize )
@@ -103,7 +124,11 @@ public final class SoycSizeMapsDiff
       final int fragment = map.getFragment();
       final SoycSizeMap other =
         before.getSizeMaps().stream().filter( m -> m.getFragment() == fragment ).findFirst().orElse( null );
-      for ( final SoycSize soycSize : map.getSizes() )
+      final List<SoycSize> sizes =
+        includeVar ?
+        map.getSizes() :
+        map.getSizes().stream().filter( s -> SoycSize.Type.var != s.getType() ).collect( Collectors.toList() );
+      for ( final SoycSize soycSize : sizes )
       {
         final SoycSize otherSoycSize = null != other ? other.findSizeByRef( soycSize.getRef() ) : null;
         if ( null == otherSoycSize )
