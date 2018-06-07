@@ -7,6 +7,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
 
 public final class SoycSizeMapsDiff
 {
@@ -18,6 +19,7 @@ public final class SoycSizeMapsDiff
   }
 
   public static class Entry
+    implements Comparable<Entry>
   {
     private final int _fragment;
     @Nonnull
@@ -52,6 +54,12 @@ public final class SoycSizeMapsDiff
       return _type;
     }
 
+    @Nonnull
+    public String getRef()
+    {
+      return null != _lhs ? _lhs.getRef() : Objects.requireNonNull( _rhs ).getRef();
+    }
+
     @Nullable
     public SoycSize getLhs()
     {
@@ -62,6 +70,22 @@ public final class SoycSizeMapsDiff
     public SoycSize getRhs()
     {
       return _rhs;
+    }
+
+    @Override
+    public int compareTo( @NotNull final SoycSizeMapsDiff.Entry o )
+    {
+      final String ref = getRef();
+      final String otherRef = o.getRef();
+      final int i = ref.compareTo( otherRef );
+      if ( 0 != i )
+      {
+        return i;
+      }
+      else
+      {
+        return getType().compareTo( o.getType() );
+      }
     }
   }
 
@@ -170,7 +194,7 @@ public final class SoycSizeMapsDiff
     final List<Entry> entries = getEntries();
     if ( !entries.isEmpty() )
     {
-      entries.forEach( entry -> emitEntry( sb, entry ) );
+      entries.stream().sorted().forEach( entry -> emitEntry( sb, entry ) );
     }
     return sb.toString();
   }

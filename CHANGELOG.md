@@ -2,6 +2,8 @@
 
 ### Unreleased
 
+* Sort the diff emitted by `SoycSizeMapsDiff.printToString()` based on ref field.
+
 ### [v0.06](https://github.com/realityforge/gwt-symbolmap/tree/v0.06) (2018-06-07)
 [Full Changelog](https://github.com/realityforge/gwt-symbolmap/compare/v0.05...v0.06)
 

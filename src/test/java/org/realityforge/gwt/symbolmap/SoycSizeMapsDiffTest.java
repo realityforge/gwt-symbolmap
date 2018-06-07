@@ -111,6 +111,46 @@ public class SoycSizeMapsDiffTest
                   "ADDED type=var ref=f size=2\n" );
   }
 
+@Test
+  public void sortedDiff()
+    throws Exception
+  {
+    final String before = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                          "<sizemaps>\n" +
+                          "  <sizemap fragment=\"0\" size=\"74\">\n" +
+                          "    <size type=\"type\" ref=\"arez.ArezContext\" size=\"35\"/>\n" +
+                          "    <size type=\"field\" ref=\"arez.Observable::myField\" size=\"1\"/>\n" +
+                          "    <size type=\"field\" ref=\"arez.ArezContextHolder::c_zone\" size=\"1\"/>\n" +
+                          "    <size type=\"method\" ref=\"arez.ArezContextHolder::$clinit()V\" size=\"26\"/>\n" +
+                          "    <size type=\"field\" ref=\"arez.ArezContextHolder::c_context\" size=\"1\"/>\n" +
+                          "  </sizemap>\n" +
+                          "</sizemaps>\n";
+    final String after = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                         "<sizemaps>\n" +
+                          "  <sizemap fragment=\"0\" size=\"74\">\n" +
+                          "    <size type=\"type\" ref=\"arez.ArezContext\" size=\"35\"/>\n" +
+                          "    <size type=\"field\" ref=\"arez.ArezContextHolder::c_context\" size=\"4\"/>\n" +
+                          "    <size type=\"field\" ref=\"arez.Observable::myField\" size=\"3\"/>\n" +
+                          "    <size type=\"field\" ref=\"arez.Observer::_observable\" size=\"324\"/>\n" +
+                          "    <size type=\"field\" ref=\"arez.ArezContextHolder::c_zone\" size=\"1\"/>\n" +
+                          "    <size type=\"method\" ref=\"arez.ArezContextHolder::$clinit()V\" size=\"26\"/>\n" +
+                         "  </sizemap>\n" +
+                         "</sizemaps>\n";
+    final SoycSizeMaps beforeSizeMaps = readFromInput( before );
+    final SoycSizeMaps afterSizeMaps = readFromInput( after );
+    final SoycSizeMapsDiff diff = SoycSizeMapsDiff.diff( beforeSizeMaps, afterSizeMaps );
+    assertEquals( diff.getBefore(), beforeSizeMaps );
+    assertEquals( diff.getAfter(), afterSizeMaps );
+    assertEquals( diff.hasDifferences(), true );
+    final List<SoycSizeMapsDiff.Entry> entries = diff.getEntries();
+    assertEquals( entries.size(), 3 );
+
+    assertEquals( diff.printToString(),
+                  "CHANGED type=field ref=arez.ArezContextHolder::c_context size=1->4 Size Delta=3\n" +
+                  "CHANGED type=field ref=arez.Observable::myField size=1->3 Size Delta=2\n" +
+                  "ADDED type=field ref=arez.Observer::_observable size=324\n" );
+  }
+
   @SuppressWarnings( "SameParameterValue" )
   private void assertEntry( @Nonnull final SoycSizeMapsDiff.Entry entry,
                             @Nonnull final SoycSizeMapsDiff.DiffType type,
