@@ -1,5 +1,7 @@
 # Change Log
 
+### Unreleased
+
 ### [v0.07](https://github.com/realityforge/gwt-symbolmap/tree/v0.07) (2018-06-07)
 [Full Changelog](https://github.com/realityforge/gwt-symbolmap/compare/v0.06...v0.07)
 
