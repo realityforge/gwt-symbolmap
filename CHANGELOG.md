@@ -1,6 +1,7 @@
 # Change Log
 
-### Unreleased
+### [v0.06](https://github.com/realityforge/gwt-symbolmap/tree/v0.06) (2018-06-07)
+[Full Changelog](https://github.com/realityforge/gwt-symbolmap/compare/v0.05...v0.06)
 
 * Change default behaviour of `SoycSizeMapsDiff` to ignore differences in vars as vars seem to be
   created for new class literals and will always differ if a class is added or removed from the
