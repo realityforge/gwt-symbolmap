@@ -3,9 +3,6 @@ require 'buildr/gpg'
 require 'buildr/single_intermediate_layout'
 require 'buildr/jacoco'
 
-PROVIDED_DEPS = [:javax_annotation, :jetbrains_annotations]
-TEST_DEPS = [:guiceyloops]
-
 desc 'GWT SymbolMap Assertions Library'
 define 'gwt-symbolmap' do
   project.group = 'org.realityforge.gwt.symbolmap'
@@ -18,16 +15,21 @@ define 'gwt-symbolmap' do
   pom.add_apache_v2_license
   pom.add_github_project('realityforge/gwt-symbolmap')
   pom.add_developer('realityforge', 'Peter Donald')
+  pom.include_transitive_dependencies << artifact(:javax_annotation)
+  pom.include_transitive_dependencies << artifact(:jetbrains_annotations)
+  pom.include_transitive_dependencies << artifact(:javacsv)
+  pom.include_transitive_dependencies << artifact(:testng)
+  pom.dependency_filter = Proc.new {|dep| dep[:scope].to_s != 'test'}
 
-  pom.provided_dependencies.concat PROVIDED_DEPS
-  compile.with PROVIDED_DEPS,
+  compile.with :javax_annotation,
+               :jetbrains_annotations,
                :javacsv,
                :testng
 
   test.options[:java_args] = ['-ea']
 
   test.using :testng
-  test.compile.with TEST_DEPS
+  test.compile.with :guiceyloops
 
   package(:jar)
   package(:sources)
