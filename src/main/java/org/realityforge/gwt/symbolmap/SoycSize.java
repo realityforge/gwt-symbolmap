@@ -1,7 +1,6 @@
 package org.realityforge.gwt.symbolmap;
 
 import java.util.Objects;
-import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 import org.w3c.dom.Element;
 
@@ -23,7 +22,6 @@ public final class SoycSize
   private final Type _type;
   @Nonnull
   private final String _ref;
-  @Nonnegative
   private final int _size;
 
   private SoycSize( @Nonnull final Type type, @Nonnull final String ref, final int size )
