@@ -7,7 +7,6 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.NotNull;
 
 public final class SoycSizeMapsDiff
 {
@@ -73,7 +72,7 @@ public final class SoycSizeMapsDiff
     }
 
     @Override
-    public int compareTo( @NotNull final SoycSizeMapsDiff.Entry o )
+    public int compareTo( @Nonnull final SoycSizeMapsDiff.Entry o )
     {
       final String ref = getRef();
       final String otherRef = o.getRef();
