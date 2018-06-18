@@ -1,6 +1,7 @@
 # Change Log
 
-### Unreleased
+### [v0.08](https://github.com/realityforge/gwt-symbolmap/tree/v0.08) (2018-06-18)
+[Full Changelog](https://github.com/realityforge/gwt-symbolmap/compare/v0.07...v0.08)
 
 * Remove unused dependency on anodoc library.
 * Replace usage of the `com.google.code.findbugs:jsr305:jar` dependency with the more lightweight
