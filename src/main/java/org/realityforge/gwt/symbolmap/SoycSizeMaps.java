@@ -37,9 +37,6 @@ public final class SoycSizeMaps
     return Collections.unmodifiableList( _sizeMaps );
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public String toString()
   {

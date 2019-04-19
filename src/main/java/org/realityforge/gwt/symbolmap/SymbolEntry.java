@@ -213,9 +213,6 @@ public final class SymbolEntry
     return _fragmentNumber;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public String toString()
   {

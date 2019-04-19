@@ -3,6 +3,7 @@
 ### Unreleased
 
 * Move to J2CL compatible variant of jetbrains annotations.
+* Remove `{@inheritDoc}` as it only explicitly indicates that the default behaviour at the expense of significant visual clutter.
 
 ### [v0.08](https://github.com/realityforge/gwt-symbolmap/tree/v0.08) (2018-06-18)
 [Full Changelog](https://github.com/realityforge/gwt-symbolmap/compare/v0.07...v0.08)

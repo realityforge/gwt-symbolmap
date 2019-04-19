@@ -45,9 +45,6 @@ public final class SoycSizeMap
     return _sizeMap.get( ref );
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public String toString()
   {

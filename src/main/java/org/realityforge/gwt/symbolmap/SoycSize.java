@@ -48,9 +48,6 @@ public final class SoycSize
     return _size;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public String toString()
   {
