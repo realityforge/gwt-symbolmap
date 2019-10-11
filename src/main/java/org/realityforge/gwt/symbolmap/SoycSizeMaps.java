@@ -20,6 +20,7 @@ import org.xml.sax.SAXException;
 
 public final class SoycSizeMaps
 {
+  @Nonnull
   private final List<SoycSizeMap> _sizeMaps = new ArrayList<>();
 
   private SoycSizeMaps()
