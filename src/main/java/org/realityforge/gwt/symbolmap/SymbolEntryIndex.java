@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import javax.annotation.Nonnull;
@@ -23,19 +24,19 @@ public final class SymbolEntryIndex
   /**
    * The entries in the order they appear in the input file.
    */
-  private final ArrayList<SymbolEntry> _symbolEntries = new ArrayList<>();
+  private final List<SymbolEntry> _symbolEntries = new ArrayList<>();
   /**
    * Index of classnames to entries.
    */
-  private final HashMap<String, ArrayList<SymbolEntry>> _classNameToEntry = new HashMap<>();
+  private final Map<String, List<SymbolEntry>> _classNameToEntry = new HashMap<>();
   /**
    * Index of jsni identifiers to entries.
    */
-  private final HashMap<String, SymbolEntry> _jsniToEntry = new HashMap<>();
+  private final Map<String, SymbolEntry> _jsniToEntry = new HashMap<>();
   /**
    * Index of javascript names to entries.
    */
-  private final HashMap<String, SymbolEntry> _jsToEntry = new HashMap<>();
+  private final Map<String, SymbolEntry> _jsToEntry = new HashMap<>();
 
   /**
    * Read and build an index from symbolMap file.
