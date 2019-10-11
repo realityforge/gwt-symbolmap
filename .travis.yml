@@ -13,4 +13,4 @@ script: bundle exec buildr clean package jacoco:report
 after_success:
 - bash <(curl -s https://codecov.io/bash)
 git:
-  depth: false
+  depth: 10
