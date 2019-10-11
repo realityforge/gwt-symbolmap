@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -12,8 +13,8 @@ import org.w3c.dom.NodeList;
 
 public final class SoycSizeMap
 {
-  private final ArrayList<SoycSize> _sizes = new ArrayList<>();
-  private final HashMap<String, SoycSize> _sizeMap = new HashMap<>();
+  private final List<SoycSize> _sizes = new ArrayList<>();
+  private final Map<String, SoycSize> _sizeMap = new HashMap<>();
   private final int _fragment;
   private final int _size;
 
