@@ -13,7 +13,9 @@ import org.w3c.dom.NodeList;
 
 public final class SoycSizeMap
 {
+  @Nonnull
   private final List<SoycSize> _sizes = new ArrayList<>();
+  @Nonnull
   private final Map<String, SoycSize> _sizeMap = new HashMap<>();
   private final int _fragment;
   private final int _size;
