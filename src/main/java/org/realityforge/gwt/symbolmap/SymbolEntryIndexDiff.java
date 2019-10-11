@@ -11,8 +11,11 @@ import javax.annotation.Nonnull;
  */
 public final class SymbolEntryIndexDiff
 {
+  @Nonnull
   private final List<SymbolEntry> _missing = new ArrayList<>();
+  @Nonnull
   private final List<SymbolEntry> _additional = new ArrayList<>();
+  @Nonnull
   private final List<SymbolEntry> _same = new ArrayList<>();
   @Nonnull
   private final SymbolEntryIndex _before;
