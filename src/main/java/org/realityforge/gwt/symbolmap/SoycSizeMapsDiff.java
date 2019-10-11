@@ -92,7 +92,7 @@ public final class SoycSizeMapsDiff
   private final SoycSizeMaps _before;
   @Nonnull
   private final SoycSizeMaps _after;
-  private final ArrayList<Entry> _entries = new ArrayList<>();
+  private final List<Entry> _entries = new ArrayList<>();
 
   private SoycSizeMapsDiff( @Nonnull final SoycSizeMaps before, @Nonnull final SoycSizeMaps after )
   {
