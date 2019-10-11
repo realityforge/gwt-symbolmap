@@ -24,18 +24,22 @@ public final class SymbolEntryIndex
   /**
    * The entries in the order they appear in the input file.
    */
+  @Nonnull
   private final List<SymbolEntry> _symbolEntries = new ArrayList<>();
   /**
    * Index of classnames to entries.
    */
+  @Nonnull
   private final Map<String, List<SymbolEntry>> _classNameToEntry = new HashMap<>();
   /**
    * Index of jsni identifiers to entries.
    */
+  @Nonnull
   private final Map<String, SymbolEntry> _jsniToEntry = new HashMap<>();
   /**
    * Index of javascript names to entries.
    */
+  @Nonnull
   private final Map<String, SymbolEntry> _jsToEntry = new HashMap<>();
 
   /**
