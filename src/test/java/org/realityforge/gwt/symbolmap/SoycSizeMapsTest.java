@@ -100,6 +100,7 @@ public class SoycSizeMapsTest
     assertEquals( soycSize.getSize(), size );
   }
 
+  @SuppressWarnings( "SameParameterValue" )
   @Nonnull
   private SoycSizeMaps readFromInput( @Nonnull final String input )
     throws Exception
