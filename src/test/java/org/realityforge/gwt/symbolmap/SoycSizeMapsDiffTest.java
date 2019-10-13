@@ -36,7 +36,7 @@ public class SoycSizeMapsDiffTest
     final SoycSizeMapsDiff diff = SoycSizeMapsDiff.diff( beforeSizeMaps, afterSizeMaps );
     assertEquals( diff.getBefore(), beforeSizeMaps );
     assertEquals( diff.getAfter(), afterSizeMaps );
-    assertEquals( diff.hasDifferences(), true );
+    assertTrue( diff.hasDifferences() );
     final List<SoycSizeMapsDiff.Entry> entries = diff.getEntries();
     assertEquals( entries.size(), 3 );
     assertEntry( entries.get( 0 ),
@@ -86,7 +86,7 @@ public class SoycSizeMapsDiffTest
     final SoycSizeMapsDiff diff = SoycSizeMapsDiff.diff( beforeSizeMaps, afterSizeMaps, true );
     assertEquals( diff.getBefore(), beforeSizeMaps );
     assertEquals( diff.getAfter(), afterSizeMaps );
-    assertEquals( diff.hasDifferences(), true );
+    assertTrue( diff.hasDifferences() );
     final List<SoycSizeMapsDiff.Entry> entries = diff.getEntries();
     assertEquals( entries.size(), 3 );
     assertEntry( entries.get( 0 ),
@@ -141,7 +141,7 @@ public class SoycSizeMapsDiffTest
     final SoycSizeMapsDiff diff = SoycSizeMapsDiff.diff( beforeSizeMaps, afterSizeMaps );
     assertEquals( diff.getBefore(), beforeSizeMaps );
     assertEquals( diff.getAfter(), afterSizeMaps );
-    assertEquals( diff.hasDifferences(), true );
+    assertTrue( diff.hasDifferences() );
     final List<SoycSizeMapsDiff.Entry> entries = diff.getEntries();
     assertEquals( entries.size(), 3 );
 

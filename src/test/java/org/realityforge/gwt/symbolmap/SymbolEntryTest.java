@@ -34,8 +34,8 @@ public class SymbolEntryTest
 
     assertEquals( symbolEntry1.getJsName(), "ArezContext" );
     assertEquals( symbolEntry1.getJsniIdent(), "" );
-    assertEquals( symbolEntry1.isType(), true );
-    assertEquals( symbolEntry1.isMember(), false );
+    assertTrue( symbolEntry1.isType() );
+    assertFalse( symbolEntry1.isMember() );
     assertEquals( symbolEntry1.getClassName(), "arez.ArezContext" );
     assertEquals( symbolEntry1.getMemberName(), "" );
     assertEquals( symbolEntry1.getSourceUri(), "arez/ArezContext.java" );
@@ -46,8 +46,8 @@ public class SymbolEntryTest
     assertEquals( symbolEntry2.getJsName(), "r" );
     assertEquals( symbolEntry2.getJsniIdent(),
                   "arez.ArezContext::$action(Larez/ArezContext;Ljava/lang/String;Larez/TransactionMode;Larez/Procedure;ZLarez/Observer;[Ljava/lang/Object;)V" );
-    assertEquals( symbolEntry2.isType(), false );
-    assertEquals( symbolEntry2.isMember(), true );
+    assertFalse( symbolEntry2.isType() );
+    assertTrue( symbolEntry2.isMember() );
     assertEquals( symbolEntry2.getClassName(), "arez.ArezContext" );
     assertEquals( symbolEntry2.getMemberName(), "$action" );
     assertEquals( symbolEntry2.getSourceUri(), "arez/ArezContext.java" );
@@ -78,8 +78,8 @@ public class SymbolEntryTest
 
     assertEquals( symbolEntry1.getJsName(), "ArezContext" );
     assertEquals( symbolEntry1.getJsniIdent(), "" );
-    assertEquals( symbolEntry1.isType(), true );
-    assertEquals( symbolEntry1.isMember(), false );
+    assertTrue( symbolEntry1.isType() );
+    assertFalse( symbolEntry1.isMember() );
     assertEquals( symbolEntry1.getClassName(), "arez.ArezContext" );
     assertEquals( symbolEntry1.getMemberName(), "" );
     assertEquals( symbolEntry1.getSourceUri(), "arez/ArezContext.java" );
