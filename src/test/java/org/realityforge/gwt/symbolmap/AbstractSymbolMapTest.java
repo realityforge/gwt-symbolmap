@@ -18,6 +18,7 @@ abstract class AbstractSymbolMapTest
     return SymbolEntryIndex.readSymbolMapIntoIndex( file );
   }
 
+  @SuppressWarnings( "SameParameterValue" )
   @Nonnull
   final Path createGzipFileFromContent( @Nonnull final String input )
     throws IOException
