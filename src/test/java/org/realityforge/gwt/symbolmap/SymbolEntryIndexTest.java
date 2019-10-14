@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class SymbolEntryIndexTest
-  extends AbstractSymbolMapTest
+  extends AbstractTest
 {
   private static final String DEFAULT_INPUT =
     "# { 0 }\n" +

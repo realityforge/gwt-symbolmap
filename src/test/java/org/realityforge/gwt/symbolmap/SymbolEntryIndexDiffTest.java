@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class SymbolEntryIndexDiffTest
-  extends AbstractSymbolMapTest
+  extends AbstractTest
 {
   private static final String HEADERS =
     "# jsName, jsniIdent, className, memberName, sourceUri, sourceLine, fragmentNumber\n";

@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class SoycSizeMapsDiffTest
-  extends AbstractSymbolMapTest
+  extends AbstractTest
 {
   @Test
   public void basicOperation()
@@ -111,7 +111,7 @@ public class SoycSizeMapsDiffTest
                   "ADDED type=var ref=f size=2\n" );
   }
 
-@Test
+  @Test
   public void sortedDiff()
     throws Exception
   {
@@ -127,13 +127,13 @@ public class SoycSizeMapsDiffTest
                           "</sizemaps>\n";
     final String after = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                          "<sizemaps>\n" +
-                          "  <sizemap fragment=\"0\" size=\"74\">\n" +
-                          "    <size type=\"type\" ref=\"arez.ArezContext\" size=\"35\"/>\n" +
-                          "    <size type=\"field\" ref=\"arez.ArezContextHolder::c_context\" size=\"4\"/>\n" +
-                          "    <size type=\"field\" ref=\"arez.Observable::myField\" size=\"3\"/>\n" +
-                          "    <size type=\"field\" ref=\"arez.Observer::_observable\" size=\"324\"/>\n" +
-                          "    <size type=\"field\" ref=\"arez.ArezContextHolder::c_zone\" size=\"1\"/>\n" +
-                          "    <size type=\"method\" ref=\"arez.ArezContextHolder::$clinit()V\" size=\"26\"/>\n" +
+                         "  <sizemap fragment=\"0\" size=\"74\">\n" +
+                         "    <size type=\"type\" ref=\"arez.ArezContext\" size=\"35\"/>\n" +
+                         "    <size type=\"field\" ref=\"arez.ArezContextHolder::c_context\" size=\"4\"/>\n" +
+                         "    <size type=\"field\" ref=\"arez.Observable::myField\" size=\"3\"/>\n" +
+                         "    <size type=\"field\" ref=\"arez.Observer::_observable\" size=\"324\"/>\n" +
+                         "    <size type=\"field\" ref=\"arez.ArezContextHolder::c_zone\" size=\"1\"/>\n" +
+                         "    <size type=\"method\" ref=\"arez.ArezContextHolder::$clinit()V\" size=\"26\"/>\n" +
                          "  </sizemap>\n" +
                          "</sizemaps>\n";
     final SoycSizeMaps beforeSizeMaps = readFromInput( before );

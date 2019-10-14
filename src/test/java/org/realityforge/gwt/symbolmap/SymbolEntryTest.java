@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class SymbolEntryTest
-  extends AbstractSymbolMapTest
+  extends AbstractTest
 {
   @Test
   public void basicOperation()

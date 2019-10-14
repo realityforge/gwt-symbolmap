@@ -8,7 +8,7 @@ import java.text.ParseException;
 import java.util.zip.GZIPOutputStream;
 import javax.annotation.Nonnull;
 
-abstract class AbstractSymbolMapTest
+abstract class AbstractTest
 {
   @Nonnull
   final SymbolEntryIndex readIndexFromInput( @Nonnull final String input )
