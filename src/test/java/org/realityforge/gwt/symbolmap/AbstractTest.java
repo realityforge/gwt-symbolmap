@@ -34,7 +34,7 @@ abstract class AbstractTest
   }
 
   @Nonnull
-  private Path createFileFromContent( final byte[] bytes )
+  private Path createFileFromContent( @Nonnull final byte[] bytes )
     throws IOException
   {
     final Path file = Files.createTempFile( "gwt-symbolmap", ".symbolMap" );
