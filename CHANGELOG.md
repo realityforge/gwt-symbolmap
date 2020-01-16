@@ -2,6 +2,7 @@
 
 ### Unreleased
 
+* Upgrade the `org.realityforge.guiceyloops` artifact to version `0.106`.
 * Upgrade the `org.realityforge.org.jetbrains.annotations` artifact to version `1.2.0`.
 
 ### [v0.09](https://github.com/realityforge/gwt-symbolmap/tree/v0.09) (2019-10-11) · [Full Changelog](https://github.com/realityforge/gwt-symbolmap/compare/v0.08...v0.09)
