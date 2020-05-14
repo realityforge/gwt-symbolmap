@@ -1,6 +1,6 @@
 # GWT SymbolMap
 
-[![Build Status](https://api.travis-ci.com/realityforge/gwt-symbolmap.svg?branch=master)](http://travis-ci.org/realityforge/gwt-symbolmap)
+[![Build Status](https://api.travis-ci.com/realityforge/gwt-symbolmap.svg?branch=master)](http://travis-ci.com/realityforge/gwt-symbolmap)
 [<img src="https://img.shields.io/maven-central/v/org.realityforge.gwt.symbolmap/gwt-symbolmap.svg?label=latest%20release"/>](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.realityforge.gwt.symbolmap%22)
 [![codecov](https://codecov.io/gh/realityforge/gwt-symbolmap/branch/master/graph/badge.svg)](https://codecov.io/gh/realityforge/gwt-symbolmap)
 
