@@ -3,6 +3,8 @@ require 'buildr/gpg'
 require 'buildr/single_intermediate_layout'
 require 'buildr/jacoco'
 
+Buildr::MavenCentral.define_publish_tasks(:profile_name => 'org.realityforge', :username => 'realityforge')
+
 desc 'GWT SymbolMap Assertions Library'
 define 'gwt-symbolmap' do
   project.group = 'org.realityforge.gwt.symbolmap'
