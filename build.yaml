@@ -9,7 +9,7 @@ artifacts:
 
   javax_annotation: org.realityforge.javax.annotation:javax.annotation:jar:1.0.1
 
-  guiceyloops: org.realityforge.guiceyloops:guiceyloops:jar:0.112
+  guiceyloops: org.realityforge.guiceyloops:guiceyloops:jar:0.113
 
   testng: org.testng:testng:jar:6.11
 
